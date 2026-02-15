@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>箭头了箭 — 移开每一支箭</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #e63329;
+      --yellow: #f5c800;
+      --green:  #2db84b;
+      --blue:   #1a73e8;
+      --purple: #9b27af;
+      --black:  #111111;
+      --white:  #ffffff;
+      --off:    #f7f7f5;
+      --border: 3px solid #111;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Noto Sans SC', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* =========== NAV =========== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--white);
+      border-bottom: var(--border);
+      padding: 0 2.5rem;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .nav-logo img {
+      width: 36px; height: 36px; border-radius: 8px;
+      border: 2px solid var(--black);
+    }
+    .nav-logo-text {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo-text span:nth-child(1) { color: var(--red); }
+    .nav-logo-text span:nth-child(2) { color: var(--black); }
+    .nav-logo-text span:nth-child(3) { color: var(--yellow); }
+    .nav-logo-text span:nth-child(4) { color: var(--green); }
+    .nav-logo-text span:nth-child(5) { color: var(--blue); }
+
+    .nav-dl {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #00C8D7; color: var(--white);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em;
+      padding: 0.5rem 1.2rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      border: none;
+    }
+    .nav-dl:hover { background: #00a8b5; transform: translateY(-1px); }
+
+    /* =========== HERO =========== */
+    .hero {
+      margin-top: 60px;
+      min-height: calc(100vh - 60px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: var(--border);
+    }
+    .hero-left {
+      padding: 5rem 4rem 5rem 5rem;
+      display: flex; flex-direction: column; justify-content: center;
+      border-right: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border: 2px solid var(--black);
+      border-radius: 2px;
+      width: fit-content;
+      margin-bottom: 2rem;
+      animation: pop-in 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    .hero-title {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+      animation: slide-up 0.7s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .hero-title .c-red { color: var(--red); }
+    .hero-title .c-black { color: var(--black); }
+    .hero-title .c-yellow { color: var(--yellow); -webkit-text-stroke: 1.5px var(--black); }
+    .hero-title .c-green { color: var(--green); }
+    .hero-title .c-blue { color: var(--blue); }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #555;
+      line-height: 1.7;
+      max-width: 380px;
+      margin: 1.5rem 0 2.5rem;
+      animation: slide-up 0.7s 0.25s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    /* TapTap button — big hero version */
+    .btn-taptap-hero {
+      display: inline-flex; align-items: center; gap: 1rem;
+      background: #00C8D7; color: var(--white);
+      border: none;
+      border-radius: 100px;
+      padding: 1.1rem 2rem;
+      text-decoration: none;
+      width: fit-content;
+      position: relative; overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: slide-up 0.7s 0.38s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .btn-taptap-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: #00a8b5;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 0;
+    }
+    .btn-taptap-hero:hover { transform: translate(-2px,-3px); box-shadow: 4px 6px 20px rgba(0,200,215,0.45); }
+    .btn-taptap-hero:hover::before { transform: translateX(0); }
+    .btn-taptap-hero:active { transform: translate(0,0); box-shadow: none; }
+    .btn-taptap-hero > * { position: relative; z-index: 1; }
+
+    .taptap-badge {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; font-weight: 900; color: white;
+      font-family: sans-serif;
+      flex-shrink: 0;
+    }
+    .btn-text-wrap {
+      display: flex; flex-direction: column; align-items: flex-start;
+    }
+    .btn-text-sub { font-size: 0.65rem; letter-spacing: 0.15em; opacity: 0.75; font-weight: 400; }
+    .btn-text-main { font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; }
+
+    /* Floating arrows decoration */
+    .arrow-deco {
+      position: absolute;
+      font-size: 1.8rem;
+      opacity: 0.08;
+      animation: float 4s ease-in-out infinite alternate;
+      user-select: none;
+    }
+    .ad1 { top: 10%; left: 5%; animation-delay: 0s; color: var(--red); }
+    .ad2 { top: 30%; right: 8%; animation-delay: -1s; color: var(--blue); }
+    .ad3 { bottom: 20%; left: 8%; animation-delay: -2s; color: var(--green); }
+    .ad4 { bottom: 10%; right: 5%; animation-delay: -0.5s; color: var(--yellow); }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-15px) rotate(15deg); }
+    }
+
+    /* Hero right — game screenshot */
+    .hero-right {
+      position: relative;
+      background: var(--off);
+      display: flex; align-items: center; justify-content: center;
+      padding: 3rem;
+      overflow: hidden;
+    }
+    .hero-screenshot-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      border: 3px solid var(--black);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 8px 8px 0 var(--black);
+      animation: screenshot-in 0.8s 0.4s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .hero-screenshot-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .screenshot-label {
+      position: absolute;
+      bottom: -3px; left: -3px;
+      background: var(--yellow);
+      border: 3px solid var(--black);
+      padding: 0.25rem 0.8rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--black);
+    }
+
+    /* bg grid lines */
+    .hero-right::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    @keyframes pop-in {
+      from { opacity: 0; transform: scale(0.7); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes screenshot-in {
+      from { opacity: 0; transform: translateX(40px) rotate(2deg); }
+      to { opacity: 1; transform: translateX(0) rotate(0deg); }
+    }
+
+    /* =========== STATS STRIP =========== */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: var(--border);
+    }
+    .stat-cell {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-right: var(--border);
+      position: relative;
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-cell::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .stat-cell:nth-child(1)::before { background: var(--red); }
+    .stat-cell:nth-child(2)::before { background: var(--yellow); }
+    .stat-cell:nth-child(3)::before { background: var(--green); }
+    .stat-cell:nth-child(4)::before { background: var(--blue); }
+    .stat-n {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-l {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #666;
+      text-transform: uppercase;
+    }
+
+    /* =========== FEATURES =========== */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-bottom: var(--border);
+    }
+    .features-header {
+      grid-column: 1 / -1;
+      padding: 4rem 5rem 3rem;
+      border-bottom: var(--border);
+      display: flex; align-items: baseline; gap: 1.5rem;
+    }
+    .features-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .features-header .h-tag {
+      background: var(--green);
+      color: white;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+      padding: 0.3rem 0.7rem; border-radius: 2px;
+    }
+
+    .feature-item {
+      padding: 3rem 4rem;
+      border-right: var(--border);
+      border-bottom: var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s;
+    }
+    .feature-item:nth-child(even) { border-right: none; }
+    .feature-item:nth-last-child(-n+2) { border-bottom: none; }
+    .feature-item:hover { background: var(--off); }
+
+    .fi-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(0,0,0,0.08);
+      position: absolute;
+      top: 1rem; right: 1.5rem;
+    }
+    .fi-icon {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .fi-title {
+      font-size: 1.1rem;
+      font-weight: 900;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.01em;
+    }
+    .fi-desc {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: #555;
+      font-weight: 400;
+    }
+    .fi-tag {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* =========== MARQUEE =========== */
+    .marquee-wrap {
+      overflow: hidden;
+      border-bottom: var(--border);
+      border-top: var(--border);
+      padding: 1rem 0;
+      background: var(--black);
+    }
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 18s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      margin-right: 3rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+    .marquee-item .dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* =========== ABOUT / DESCRIPTION =========== */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: var(--border);
+    }
+    .about-left {
+      padding: 5rem;
+      border-right: var(--border);
+    }
+    .about-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.25em;
+      text-transform: uppercase; color: #999;
+      margin-bottom: 1.5rem;
+    }
+    .about-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+    }
+    .about-body {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: #444;
+      margin-bottom: 1.5rem;
+    }
+    .about-highlight {
+      background: var(--yellow);
+      padding: 1rem 1.5rem;
+      border-left: 4px solid var(--black);
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.6;
+      margin-top: 1.5rem;
+    }
+    .about-right {
+      background: var(--off);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 4rem;
+      gap: 2rem;
+    }
+    .icon-big {
+      width: 120px; height: 120px;
+      border-radius: 24px;
+      border: 3px solid var(--black);
+      box-shadow: 6px 6px 0 var(--black);
+      overflow: hidden;
+    }
+    .icon-big img { width: 100%; height: 100%; display: block; }
+    .tag-list {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center;
+    }
+    .tag-pill {
+      padding: 0.4rem 1rem;
+      border: 2px solid var(--black);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      background: white;
+    }
+
+    /* =========== FINAL CTA =========== */
+    .final-cta {
+      padding: 7rem 5rem;
+      text-align: center;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '→ → → → → → → → → → → → → → → → → → → → → → → → → → → → → → → → → → → → → → → →';
+      position: absolute;
+      top: 50%; left: 0;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: rgba(255,255,255,0.04);
+      white-space: nowrap;
+      letter-spacing: 0.5rem;
+    }
+    .final-cta-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em;
+      color: var(--yellow); text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .final-cta-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.8rem;
+    }
+    .final-cta-title .accent { color: var(--yellow); }
+    .final-cta-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.55);
+      margin-bottom: 3rem;
+    }
+    .btn-taptap-white {
+      display: inline-flex; align-items: center; gap: 1rem;
+      background: #00C8D7; color: var(--white);
+      border: none;
+      border-radius: 100px;
+      padding: 1.2rem 2.4rem;
+      text-decoration: none;
+      font-weight: 700; font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .btn-taptap-white::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: #00a8b5;
+      transform: translateX(-100%);
+      transition: transform 0.3s;
+    }
+    .btn-taptap-white:hover { transform: translate(-2px,-3px); box-shadow: 4px 6px 20px rgba(0,200,215,0.5); }
+    .btn-taptap-white:hover::before { transform: translateX(0); }
+    .btn-taptap-white > * { position: relative; z-index: 1; }
+
+    /* =========== FOOTER =========== */
+    footer {
+      border-top: var(--border);
+      padding: 1.5rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.75rem; color: #999; font-weight: 400;
+    }
+    .footer-logo {
+      font-weight: 900; color: var(--black);
+      font-size: 0.9rem;
+    }
+
+    /* =========== RESPONSIVE =========== */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 3rem 1.5rem; border-right: none; border-bottom: var(--border); }
+      .hero-right { padding: 2rem 1.5rem; }
+      .stats-strip { grid-template-columns: repeat(2, 1fr); }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .stat-cell:nth-child(3) { border-right: var(--border); border-top: var(--border); }
+      .stat-cell:nth-child(4) { border-top: var(--border); }
+      .features { grid-template-columns: 1fr; }
+      .feature-item { border-right: none !important; }
+      .features-header { padding: 3rem 1.5rem 2rem; }
+      .feature-item { padding: 2rem 1.5rem; }
+      .about { grid-template-columns: 1fr; }
+      .about-left { padding: 3rem 1.5rem; border-right: none; border-bottom: var(--border); }
+      .about-right { padding: 2.5rem 1.5rem; }
+      .final-cta { padding: 5rem 2rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      nav { padding: 0 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="data:image/png;base64,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" alt="Icon"/>
+    <div class="nav-logo-text">
+      <span>箭</span><span>头</span><span>了</span><span>箭</span>
+    </div>
+  </div>
+  <a href="https://l.taptap.cn/HD6Yy6WJ?channel=rep-rep_zjgx5hbkds3" target="_blank" class="nav-dl">
+    🎮 TapTap 下载
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="arrow-deco ad1">→</span>
+    <span class="arrow-deco ad2">↑</span>
+    <span class="arrow-deco ad3">←</span>
+    <span class="arrow-deco ad4">↓</span>
+
+    <div class="hero-tag">🧩 极简解谜 · 烧脑益智</div>
+    <h1 class="hero-title">
+      <span class="c-red">箭</span><span class="c-black">头</span><br>
+      <span class="c-yellow">了</span><span class="c-green">箭</span>
+    </h1>
+    <p class="hero-sub">移出每一支箭，不引发任何碰撞。<br>简单易懂，难以精通。</p>
+    <a href="https://l.taptap.cn/HD6Yy6WJ?channel=rep-rep_zjgx5hbkds3" target="_blank" class="btn-taptap-hero">
+      <div class="taptap-badge">T</div>
+      <div class="btn-text-wrap">
+        <span class="btn-text-sub">在 TapTap 免费下载</span>
+        <span class="btn-text-main">立即开始游戏 →</span>
+      </div>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-screenshot-wrap">
+   
+      <video
+  src="./play.mp4"
+  autoplay
+  loop
+  muted
+  playsinline
+  style="width:100%; display:block;"
+></video>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-cell">
+    <div class="stat-n" style="color:var(--red)">1000+</div>
+    <div class="stat-l">手工关卡</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n" style="color:var(--yellow)">∞</div>
+    <div class="stat-l">挑战乐趣</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n" style="color:var(--green)">0</div>
+    <div class="stat-l">时间压力</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n" style="color:var(--blue)">4+</div>
+    <div class="stat-l">颜色系统</div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <!-- 复制两遍实现无缝 -->
+    <span class="marquee-item"><span class="dot" style="background:var(--red)"></span>逻辑推理</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--yellow)"></span>路径规划</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--green)"></span>空间想象</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--blue)"></span>无压解谜</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--purple)"></span>循序渐进</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--red)"></span>千关挑战</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--green)"></span>碎片时光</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--blue)"></span>逻辑推理</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--purple)"></span>路径规划</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--red)"></span>空间想象</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--yellow)"></span>无压解谜</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--green)"></span>循序渐进</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--blue)"></span>千关挑战</span>
+    <span class="marquee-item"><span class="dot" style="background:var(--red)"></span>碎片时光</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-header">
+    <h2>核心特色</h2>
+    <span class="h-tag">FEATURES</span>
+  </div>
+
+  <div class="feature-item">
+    <span class="fi-num">01</span>
+    <span class="fi-icon">🧠</span>
+    <h3 class="fi-title">烧脑逻辑谜题</h3>
+    <p class="fi-desc">每一关都是精心设计的逻辑挑战，需要你步步为营、预判后果，在有限的空间里找到唯一正确的路径。</p>
+    <span class="fi-tag" style="background:var(--red);color:white;">高度挑战</span>
+  </div>
+
+  <div class="feature-item">
+    <span class="fi-num">02</span>
+    <span class="fi-icon">📐</span>
+    <h3 class="fi-title">1000+ 手工关卡</h3>
+    <p class="fi-desc">超过一千个精心手工制作的关卡，从入门到烧脑，难度循序渐进，游戏机制不断丰富，玩法永远新鲜。</p>
+    <span class="fi-tag" style="background:var(--blue);color:white;">内容丰富</span>
+  </div>
+
+  <div class="feature-item">
+    <span class="fi-num">03</span>
+    <span class="fi-icon">⏱️</span>
+    <h3 class="fi-title">零压力自由节奏</h3>
+    <p class="fi-desc">没有计时，没有生命值，没有任何催促。完全按照自己的节奏思考，享受纯粹的解谜乐趣与成就感。</p>
+    <span class="fi-tag" style="background:var(--green);color:white;">轻松休闲</span>
+  </div>
+
+
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-left">
+    <p class="about-label">ABOUT THE GAME · 关于游戏</p>
+    <h2 class="about-title">简洁界面，<br>深度思考</h2>
+    <p class="about-body">
+      欢迎来到《箭头了箭》—— 一款极简风格的解谜游戏，它将考验你的逻辑推理、路径规划与空间想象力。你的目标清晰明确：在不引发任何碰撞的情况下，安全移出网格中的每一支箭。
+    </p>
+    <p class="about-body">
+      简洁而沉浸的界面设计，让你全心专注于解谜过程。无论是利用碎片时间放松片刻，还是投入一场深度的思维挑战，都将带给你冷静与策略完美结合的游戏体验。
+    </p>
+    <div class="about-highlight">
+      🚀 你能成功解开每一个网格，并守护所有爱心吗？
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="icon-big">
+      <img src="data:image/png;base64,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" alt="游戏图标"/>
+    </div>
+    <div class="tag-list">
+      <span class="tag-pill" style="border-color:var(--red);color:var(--red);">🧩 解谜</span>
+      <span class="tag-pill" style="border-color:var(--blue);color:var(--blue);">🧠 益智</span>
+      <span class="tag-pill" style="border-color:var(--green);color:var(--green);">📱 手机游戏</span>
+      <span class="tag-pill" style="border-color:var(--yellow);">⭐ 免费游戏</span>
+      <span class="tag-pill" style="border-color:var(--purple);color:var(--purple);">🎯 极简风格</span>
+      <span class="tag-pill">🕐 碎片时间</span>
+    </div>
+    <a href="https://l.taptap.cn/HD6Yy6WJ?channel=rep-rep_zjgx5hbkds3" target="_blank" class="btn-taptap-hero" style="animation:none;">
+      <div class="taptap-badge">T</div>
+      <div class="btn-text-wrap">
+        <span class="btn-text-sub">TapTap 免费下载</span>
+        <span class="btn-text-main">开始解谜 →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <p class="final-cta-label">🎮 现已上线 · Available Now</p>
+  <h2 class="final-cta-title">准备好<span class="accent">解谜</span>了吗？</h2>
+  <p class="final-cta-sub">移出每一支箭，不引发任何碰撞——就这么简单，又这么难。</p>
+  <a href="https://l.taptap.cn/HD6Yy6WJ?channel=rep-rep_zjgx5hbkds3" target="_blank" class="btn-taptap-white">
+    <div class="taptap-badge">T</div>
+    <div class="btn-text-wrap">
+      <span class="btn-text-sub" style="color:rgba(255,255,255,0.8);">免费下载 · TapTap</span>
+      <span class="btn-text-main" style="color:#fff;">立即体验游戏 →</span>
+    </div>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">箭头了箭</div>
+  <span>© 2025 箭头了箭 · All Rights Reserved</span>
+  <span>极简解谜 · 无压挑战</span>
+</footer>
+
+</body>
+</html>
