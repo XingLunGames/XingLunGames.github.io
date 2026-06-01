@@ -1,4 +1,5 @@
 google.com, pub-2151420963905126, DIRECT, f08c47fec0942fa0
+google.com, pub-2817682401788195, DIRECT, f08c47fec0942fa0
 tradplusad.com,383f315bf254dfe2,DIRECT
 pubmatic.com, 160692, RESELLER, 5d62403b186f2ace
 olaex.biz, 100005, RESELLER
