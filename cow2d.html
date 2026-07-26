@@ -9,7 +9,7 @@
             font-family: "Microsoft YaHei", sans-serif;
             line-height: 1.8;
             padding: 20px;
-            max-width: 1000px;
+            max-width: 1180px;
             margin: 0 auto;
             color: #333;
         }
@@ -34,7 +34,7 @@
             font-size: 14px;
             line-height: 1.65;
         }
-        .tbl-sdk { min-width: 880px; }
+        .tbl-sdk { min-width: 1040px; }
         .tbl-perm { min-width: 620px; }
         th, td {
             border: 1px solid #ddd;
@@ -250,8 +250,8 @@
     <div class="tbl-wrap">
     <table class="tbl-sdk">
         <colgroup>
-            <col style="width:10%"><col style="width:12%"><col style="width:26%">
-            <col style="width:11%"><col style="width:23%"><col style="width:18%">
+            <col style="width:9%"><col style="width:11%"><col style="width:34%">
+            <col style="width:14%"><col style="width:17%"><col style="width:15%">
         </colgroup>
         <thead>
             <tr>
@@ -267,56 +267,56 @@
             <tr>
                 <td class="sdk-name">TapSDK</td>
                 <td>易玩（上海）网络科技有限公司</td>
-                <td>AndroidID、系统版本、设备型号、设备 CPU 信息、设备内存信息、网络类型、IP 地址、设备名称、手机样式、设备指定应用信息（是否已安装 TapTap 客户端）；<br>调用权限：网络权限、获取网络状态、写入外部存储权限</td>
-                <td>—</td>
+                <td>【设备标识符】AndroidID<br>【设备/系统信息】系统版本、设备型号、设备 CPU 信息、设备内存信息、设备名称、手机样式<br>【网络信息】网络类型、IP 地址<br>【应用信息】设备指定应用信息（是否已安装 TapTap 客户端）<br>【调用权限】网络权限、获取网络状态、写入外部存储权限</td>
+                <td class="optional">传感器列表、读写存储权限、读取电话状态（仅在启用数据分析功能时）</td>
                 <td>用于 TapTap 账号登录与用户认证、账户管理、实名认证与未成年人防沉迷、游戏更新、排行榜、云存档、成就系统及评价分享功能；设备信息用于确保系统兼容与定位问题，设备名称用于本地数据加密，写入外部存储用于保存排行榜分享图片</td>
                 <td><a href="https://developer.taptap.cn/docs/sdk/start/agreement/" target="_blank" rel="noopener">https://developer.taptap.cn/docs/sdk/start/agreement/</a></td>
             </tr>
             <tr>
                 <td class="sdk-name">创致 ToBid<br>聚合广告 SDK</td>
                 <td>北京创致科技有限公司</td>
-                <td>OAID、Android ID、GAID、设备品牌/型号、IP 地址、UA、WIFI SSID/BSSID、设备分辨率、存储空间、运营商、网络状态、系统版本、设备传感器信息、应用名称及版本号</td>
-                <td class="optional">IMEI、MAC 地址、应用安装列表、地理位置</td>
+                <td>【设备标识符】AndroidID、OAID、GAID<br>【传感器信息】传感器列表，及加速度传感器、陀螺仪传感器、磁场传感器、线性加速度传感器、旋转矢量传感器等传感器数据<br>【设备/系统信息】设备制造商、品牌、设备型号、CPU 信息、操作系统版本、屏幕分辨率、屏幕方向、屏幕 DPI、时区、系统启动时间、系统语言、国家代码、运行内存、总/剩余磁盘空间、前后台状态、运行中的进程信息、SIM 卡信息、锁屏状态<br>【应用信息】宿主应用的包名、应用版本号<br>【网络信息】IP 地址、网络类型、运营商、WIFI SSID/BSSID、User-Agent<br>【行为数据】产品交互数据、广告展示/点击/转化数据<br>【诊断数据】崩溃数据、性能数据</td>
+                <td class="optional">IMEI、MAC 地址、应用安装列表、粗略位置信息、精确位置信息</td>
                 <td>用于广告投放与优化、识别虚假设备与反作弊、广告主归因、个性化推荐</td>
                 <td><a href="https://www.tobidad.com/policy" target="_blank" rel="noopener">https://www.tobidad.com/policy</a></td>
             </tr>
             <tr>
                 <td class="sdk-name">优量汇 SDK</td>
                 <td>深圳市腾讯计算机系统有限公司</td>
-                <td>设备传感器信息、IP 地址、应用安装列表、OAID、GAID、Android ID</td>
-                <td>—</td>
+                <td>【设备标识符】AndroidID、OAID、GAID<br>【传感器信息】传感器列表，及加速度传感器、陀螺仪传感器、磁场传感器、线性加速度传感器、旋转矢量传感器等传感器数据<br>【设备/系统信息】设备品牌、设备型号、CPU 信息、操作系统版本、屏幕分辨率、系统语言、运行内存、磁盘空间<br>【应用信息】宿主应用的包名、应用版本号、应用安装列表<br>【网络信息】IP 地址、网络类型、运营商<br>【行为数据】产品交互数据、广告展示/点击/转化数据<br>【诊断数据】崩溃数据、性能数据</td>
+                <td class="optional">MAC 地址、IMEI、粗略位置信息、精确位置信息</td>
                 <td>用于广告定向推送，提供个性化的广告体验，并帮助广告商根据用户设备和行为优化广告展示效果</td>
                 <td><a href="https://e.qq.com/dev/help_detail.html?cid=2005&amp;pid=5983" target="_blank" rel="noopener">https://e.qq.com/dev/help_detail.html?cid=2005&amp;pid=5983</a></td>
             </tr>
             <tr>
                 <td class="sdk-name">快手联盟<br>广告 SDK</td>
                 <td>北京快手科技有限公司</td>
-                <td>GAID、Android ID、OAID、MAC地址</td>
-                <td>—</td>
+                <td>【设备标识符】AndroidID、OAID、GAID<br>【传感器信息】传感器列表，及加速度传感器、陀螺仪传感器、磁场传感器、线性加速度传感器、旋转矢量传感器等传感器数据<br>【设备/系统信息】设备制造商、品牌、设备型号、CPU 信息、操作系统版本、屏幕分辨率、系统语言、运行内存、磁盘空间、前后台状态、锁屏状态<br>【应用信息】宿主应用的包名、应用版本号<br>【网络信息】IP 地址、网络类型、运营商、WIFI 信息<br>【行为数据】产品交互数据、广告展示/点击/转化数据<br>【诊断数据】崩溃数据、性能数据</td>
+                <td class="optional">MAC 地址、IMEI、应用安装列表、粗略位置信息、精确位置信息</td>
                 <td>用于广告定向推送，提供个性化的广告体验，并帮助广告商根据用户设备和行为优化广告展示效果</td>
                 <td><a href="https://u.kuaishou.com/home/detail/1220" target="_blank" rel="noopener">https://u.kuaishou.com/home/detail/1220</a></td>
             </tr>
             <tr>
                 <td class="sdk-name">Sigmob SDK</td>
                 <td>北京创智汇聚科技股份有限公司</td>
-                <td>OAID、Android ID、GAID、设备品牌/型号、IP 地址、UA、设备分辨率、运营商、网络状态、系统版本、设备传感器信息、应用名称及版本号</td>
-                <td class="optional">IMEI、MAC 地址、地理位置</td>
+                <td>【设备标识符】AndroidID、OAID（具体字段因软硬件版本而异）；<strong>IMEI（当前接入版本 4.25.21 低于 4.25.23，该版本会收集 IMEI）</strong><br>【应用信息】宿主应用的包名、应用版本号<br>【设备/系统信息】设备制造商、品牌、设备型号、操作系统版本、屏幕分辨率、屏幕方向、屏幕 DPI、时区、系统初始化时间、系统启动时间、系统语言、国家代码、运行内存、前后台状态、运行中的进程信息、SIM 卡信息（mcc&amp;mnc）、锁屏状态<br>【网络信息】IP 地址、网络类型、运营商<br>【行为数据】产品交互数据、广告展示/点击/转化数据<br>【诊断数据】崩溃数据、性能数据</td>
+                <td class="optional">粗略位置信息、精确位置信息；线性加速度、磁场、旋转矢量、加速度、陀螺仪传感器；应用安装列表；总磁盘大小、剩余磁盘大小</td>
                 <td>用于广告投放与优化、识别虚假设备与反作弊、广告主归因、个性化推荐</td>
                 <td><a href="https://doc.sigmob.com/sigmob/140/" target="_blank" rel="noopener">https://doc.sigmob.com/sigmob/140/</a></td>
             </tr>
             <tr>
                 <td class="sdk-name">U-APP 移动统计 SDK</td>
                 <td>友盟同欣（北京）科技有限公司、北京锐讯灵通科技有限公司</td>
-                <td>Android ID、OAID、IDFA、OpenUDID、GUID</td>
-                <td>—</td>
+                <td>【设备标识符】AndroidID、OAID、IDFA、OpenUDID、GUID<br>【设备/系统信息】设备品牌、设备型号、操作系统版本、屏幕分辨率、系统语言、时区<br>【网络信息】IP 地址、网络类型、运营商<br>【行为数据】页面访问记录、会话时长、崩溃日志</td>
+                <td class="optional">MAC 地址、IMEI、应用安装列表、粗略位置信息、传感器信息（用于设备指纹与反作弊）</td>
                 <td>采集设备标识信息用于生成脱敏的终端用户设备标识，完成移动应用基础统计</td>
                 <td><a href="https://developer.umeng.com/docs/147377/detail/3038360" target="_blank" rel="noopener">https://developer.umeng.com/docs/147377/detail/3038360</a></td>
             </tr>
             <tr>
                 <td class="sdk-name">Unity3D</td>
                 <td>Unity Technologies</td>
-                <td>设备传感器信息、Android ID</td>
-                <td>—</td>
+                <td>【设备标识符】AndroidID、设备唯一安装标识<br>【设备/系统信息】设备型号、操作系统版本、CPU 信息、运行内存、设备传感器信息<br>【网络信息】IP 地址<br>【行为数据】应用交互事件、会话信息<br>【诊断数据】崩溃数据、性能数据</td>
+                <td class="optional">—</td>
                 <td>用于设备标识，以支持游戏的基础功能，例如设备的兼容性分析和错误排查</td>
                 <td><a href="https://unity.com/cn/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener">https://unity.com/cn/legal/game-player-and-app-user-privacy-policy</a></td>
             </tr>
@@ -325,6 +325,9 @@
     </div>
 
     <p><strong>特别说明：</strong>上述第三方 SDK 均在您阅读本隐私政策并点击"同意"之后才会完成初始化并开始收集信息。<strong>在您点击"同意"之前，我们及上述任何第三方 SDK 都不会读取、收集您的任何设备标识符或其他个人信息。</strong>若您点击"不同意"，我们将不会收集您的任何个人信息。</p>
+
+    <p><strong>关于传感器信息</strong></p>
+    <p>上述广告与统计 SDK 会读取您设备的<strong>传感器列表</strong>，并在广告展示期间读取<strong>加速度传感器、陀螺仪传感器、磁场传感器、线性加速度传感器、旋转矢量传感器</strong>等传感器数据。其用途为：（1）<strong>广告反作弊</strong>——通过设备的运动特征判断是否为真实用户设备，识别模拟器与刷量作弊；（2）<strong>互动广告的交互实现</strong>——支持"摇一摇""扭一扭"等需要设备姿态的广告样式。上述传感器均属于 Android 系统的普通传感器，读取时不需要单独申请系统权限，我们不会通过传感器数据推断您的健康状况、行踪轨迹等敏感个人信息。</p>
 
     <p><strong>关于个性化广告推荐</strong></p>
     <p>我们会基于设备标识符与您的使用行为，通过上述广告 SDK 向您展示个性化广告。<strong>您可以在游戏内"设置"页面关闭"个性化广告推荐"开关。</strong>关闭后，您看到的广告数量保持不变，但广告内容与您的相关度会降低。</p>
