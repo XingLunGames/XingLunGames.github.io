@@ -20,24 +20,44 @@
         ol { margin: 15px 0; padding-left: 40px; }
         li { margin: 10px 0; }
 
+        /* 表格外层容器：窄屏时横向滚动，而不是把列压扁 */
+        .tbl-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
         table {
             width: 100%;
+            table-layout: fixed;
             border-collapse: collapse;
-            margin: 20px 0;
             background: #f9f9f9;
+            font-size: 14px;
+            line-height: 1.65;
         }
+        .tbl-sdk { min-width: 880px; }
+        .tbl-perm { min-width: 620px; }
         th, td {
             border: 1px solid #ddd;
-            padding: 12px;
+            padding: 10px;
             text-align: left;
             vertical-align: top;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         th { background: #f0f4ff; font-weight: bold; }
         tr:hover { background: #f5f8ff; }
         a { color: #0066cc; text-decoration: none; }
         a:hover { text-decoration: underline; }
-        .sdk-name { font-weight: bold; color: #0066cc; white-space: nowrap; }
+        /* 长网址按字符断行，避免撑破列宽 */
+        td a { word-break: break-all; }
+        .sdk-name { font-weight: bold; color: #0066cc; }
         .optional { color: #888; font-size: 0.92em; }
+
+        @media (max-width: 700px) {
+            body { padding: 15px 12px; }
+            table { font-size: 13px; }
+            th, td { padding: 8px; }
+        }
     </style>
 </head>
 <body>
@@ -133,6 +153,83 @@
     <p>（11）法律法规规定的其他情形。</p>
     <p>特别提示您注意，如信息无法单独或结合其他信息识别到您的个人身份，其不属于法律意义上您的个人信息；当您的信息可以单独或结合其他信息识别到您的个人身份时或我们将无法与任何特定个人信息建立联系的数据与其他您的个人信息结合使用时，这些信息在结合使用期间，将作为您的个人信息按照本隐私政策处理与保护。</p>
 
+    <p>（五）应用权限申请与使用情况说明</p>
+    <p>为实现上述功能与服务，本游戏会在相应场景下向您申请以下系统权限。<strong>下列权限均不会默认开启，我们仅在您触发对应功能时向您申请，并在您授权后方可使用；您可以随时在设备的"设置—应用—权限管理"中关闭任一权限，关闭后不影响您使用游戏的核心玩法。</strong></p>
+
+    <div class="tbl-wrap">
+    <table class="tbl-perm">
+        <colgroup>
+            <col style="width:16%"><col style="width:26%"><col style="width:44%"><col style="width:14%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>权限名称</th>
+                <th>对应的系统权限</th>
+                <th>使用目的</th>
+                <th>是否必需</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>网络访问 / 网络状态</td>
+                <td>INTERNET、ACCESS_NETWORK_STATE、ACCESS_WIFI_STATE、CHANGE_NETWORK_STATE</td>
+                <td>加载游戏资源、请求与展示广告、同步云存档与排行榜数据</td>
+                <td>必需</td>
+            </tr>
+            <tr>
+                <td>存储（写入外部存储）</td>
+                <td>WRITE_EXTERNAL_STORAGE</td>
+                <td>缓存游戏资源与广告素材以减少流量消耗；存放广告落地页下载的应用安装包</td>
+                <td>非必需，可拒绝</td>
+            </tr>
+            <tr>
+                <td>设备信息 / 电话状态</td>
+                <td>READ_PHONE_STATE</td>
+                <td>广告合作方用于识别设备、反作弊与广告归因</td>
+                <td>非必需，可拒绝</td>
+            </tr>
+            <tr>
+                <td>地理位置</td>
+                <td>ACCESS_COARSE_LOCATION、ACCESS_FINE_LOCATION</td>
+                <td>广告合作方用于地域化广告投放，提升广告相关度</td>
+                <td>非必需，可拒绝</td>
+            </tr>
+            <tr>
+                <td>读取应用列表</td>
+                <td>QUERY_ALL_PACKAGES</td>
+                <td>广告合作方用于判断广告落地页可跳转的目标应用是否已安装，优化广告推送与跳转体验</td>
+                <td>非必需，可拒绝</td>
+            </tr>
+            <tr>
+                <td>安装应用</td>
+                <td>REQUEST_INSTALL_PACKAGES</td>
+                <td>在您主动点击广告并确认下载后，引导您安装所下载的应用</td>
+                <td>非必需，可拒绝</td>
+            </tr>
+            <tr>
+                <td>震动</td>
+                <td>VIBRATE</td>
+                <td>游戏操作的触感反馈</td>
+                <td>非必需，可拒绝</td>
+            </tr>
+            <tr>
+                <td>通知</td>
+                <td>POST_NOTIFICATIONS</td>
+                <td>向您推送游戏活动、版本更新等提醒</td>
+                <td>非必需，可拒绝</td>
+            </tr>
+            <tr>
+                <td>保持唤醒</td>
+                <td>WAKE_LOCK</td>
+                <td>在播放激励视频广告等场景下保持屏幕常亮，避免播放中断</td>
+                <td>非必需，可拒绝</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <p>请您注意，我们可能会因业务调整而更新上述权限清单。若新增权限，我们会在申请时向您单独说明用途并征得您的同意。</p>
+
     <h2>二、对 Cookie 和同类技术的使用</h2>
     <p>Cookie 和同类技术是互联网中的通用常用技术。当您使用本游戏软件及相关服务时，我们可能会使用相关技术向您的设备发送一个或多个 Cookie 或匿名标识符记录您的登录状态，方便您快捷登录。</p>
     <p>我们承诺，我们不会将 Cookie 用于本隐私政策所述目的之外的任何其他用途。</p>
@@ -148,9 +245,14 @@
     <p>我们不会向第三方共享、转让您的个人信息，除非经过您本人事先授权同意，或者共享、转让的个人信息是去标识化处理后的信息，且共享第三方无法重新识别此类信息的自然人主体。</p>
 
     <p><strong>第三方 SDK 调用说明</strong></p>
-    <p>本游戏集成了以下第三方 SDK，以实现广告投放、数据统计、账号服务等功能。各 SDK 收集的信息及其用途如下：</p>
+    <p>本游戏集成了以下第三方 SDK，以实现广告投放、数据统计、账号服务等功能。该等第三方 SDK 由其提供方独立运营，其收集与处理您个人信息的行为适用其自身的隐私政策，<strong>我们建议您点击下表中的链接一并阅读</strong>。各 SDK 收集的信息、用途及隐私政策链接如下：</p>
 
-    <table>
+    <div class="tbl-wrap">
+    <table class="tbl-sdk">
+        <colgroup>
+            <col style="width:10%"><col style="width:12%"><col style="width:26%">
+            <col style="width:11%"><col style="width:23%"><col style="width:18%">
+        </colgroup>
         <thead>
             <tr>
                 <th>SDK 名称</th>
@@ -158,50 +260,57 @@
                 <th>收集的信息（必要）</th>
                 <th>可选信息</th>
                 <th>收集目的</th>
+                <th>隐私政策</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="sdk-name">TapSDK</td>
-                <td>TapTap</td>
-                <td>Android ID、IP 地址、写入外部存储权限</td>
+                <td>易玩（上海）网络科技有限公司</td>
+                <td>AndroidID、系统版本、设备型号、设备 CPU 信息、设备内存信息、网络类型、IP 地址、设备名称、手机样式、设备指定应用信息（是否已安装 TapTap 客户端）；<br>调用权限：网络权限、获取网络状态、写入外部存储权限</td>
                 <td>—</td>
-                <td>用于用户认证、账户管理、社交功能整合（游戏内好友列表、排行榜和分享功能）</td>
+                <td>用于 TapTap 账号登录与用户认证、账户管理、实名认证与未成年人防沉迷、游戏更新、排行榜、云存档、成就系统及评价分享功能；设备信息用于确保系统兼容与定位问题，设备名称用于本地数据加密，写入外部存储用于保存排行榜分享图片</td>
+                <td><a href="https://developer.taptap.cn/docs/sdk/start/agreement/" target="_blank" rel="noopener">https://developer.taptap.cn/docs/sdk/start/agreement/</a></td>
             </tr>
             <tr>
-                <td class="sdk-name">ToBid SDK</td>
-                <td>TopOn / AppLovin</td>
+                <td class="sdk-name">创致 ToBid<br>聚合广告 SDK</td>
+                <td>北京创致科技有限公司</td>
                 <td>OAID、Android ID、GAID、设备品牌/型号、IP 地址、UA、WIFI SSID/BSSID、设备分辨率、存储空间、运营商、网络状态、系统版本、设备传感器信息、应用名称及版本号</td>
                 <td class="optional">IMEI、MAC 地址、应用安装列表、地理位置</td>
                 <td>用于广告投放与优化、识别虚假设备与反作弊、广告主归因、个性化推荐</td>
+                <td><a href="https://www.tobidad.com/policy" target="_blank" rel="noopener">https://www.tobidad.com/policy</a></td>
             </tr>
             <tr>
                 <td class="sdk-name">优量汇 SDK</td>
-                <td>腾讯广告</td>
+                <td>深圳市腾讯计算机系统有限公司</td>
                 <td>设备传感器信息、IP 地址、应用安装列表、OAID、GAID、Android ID</td>
                 <td>—</td>
                 <td>用于广告定向推送，提供个性化的广告体验，并帮助广告商根据用户设备和行为优化广告展示效果</td>
+                <td><a href="https://e.qq.com/dev/help_detail.html?cid=2005&amp;pid=5983" target="_blank" rel="noopener">https://e.qq.com/dev/help_detail.html?cid=2005&amp;pid=5983</a></td>
             </tr>
             <tr>
-                <td class="sdk-name">快手 SDK</td>
+                <td class="sdk-name">快手联盟<br>广告 SDK</td>
                 <td>北京快手科技有限公司</td>
                 <td>GAID、Android ID、OAID、MAC地址</td>
                 <td>—</td>
                 <td>用于广告定向推送，提供个性化的广告体验，并帮助广告商根据用户设备和行为优化广告展示效果</td>
+                <td><a href="https://u.kuaishou.com/home/detail/1220" target="_blank" rel="noopener">https://u.kuaishou.com/home/detail/1220</a></td>
             </tr>
             <tr>
                 <td class="sdk-name">Sigmob SDK</td>
-                <td>北京创蓝科技有限公司</td>
+                <td>北京创智汇聚科技股份有限公司</td>
                 <td>OAID、Android ID、GAID、设备品牌/型号、IP 地址、UA、设备分辨率、运营商、网络状态、系统版本、设备传感器信息、应用名称及版本号</td>
                 <td class="optional">IMEI、MAC 地址、地理位置</td>
                 <td>用于广告投放与优化、识别虚假设备与反作弊、广告主归因、个性化推荐</td>
+                <td><a href="https://doc.sigmob.com/sigmob/140/" target="_blank" rel="noopener">https://doc.sigmob.com/sigmob/140/</a></td>
             </tr>
             <tr>
                 <td class="sdk-name">U-APP 移动统计 SDK</td>
-                <td>友盟（Umeng）</td>
+                <td>友盟同欣（北京）科技有限公司、北京锐讯灵通科技有限公司</td>
                 <td>Android ID、OAID、IDFA、OpenUDID、GUID</td>
                 <td>—</td>
                 <td>采集设备标识信息用于生成脱敏的终端用户设备标识，完成移动应用基础统计</td>
+                <td><a href="https://developer.umeng.com/docs/147377/detail/3038360" target="_blank" rel="noopener">https://developer.umeng.com/docs/147377/detail/3038360</a></td>
             </tr>
             <tr>
                 <td class="sdk-name">Unity3D</td>
@@ -209,9 +318,16 @@
                 <td>设备传感器信息、Android ID</td>
                 <td>—</td>
                 <td>用于设备标识，以支持游戏的基础功能，例如设备的兼容性分析和错误排查</td>
+                <td><a href="https://unity.com/cn/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener">https://unity.com/cn/legal/game-player-and-app-user-privacy-policy</a></td>
             </tr>
         </tbody>
     </table>
+    </div>
+
+    <p><strong>特别说明：</strong>上述第三方 SDK 均在您阅读本隐私政策并点击"同意"之后才会完成初始化并开始收集信息。<strong>在您点击"同意"之前，我们及上述任何第三方 SDK 都不会读取、收集您的任何设备标识符或其他个人信息。</strong>若您点击"不同意"，我们将不会收集您的任何个人信息。</p>
+
+    <p><strong>关于个性化广告推荐</strong></p>
+    <p>我们会基于设备标识符与您的使用行为，通过上述广告 SDK 向您展示个性化广告。<strong>您可以在游戏内"设置"页面关闭"个性化广告推荐"开关。</strong>关闭后，您看到的广告数量保持不变，但广告内容与您的相关度会降低。</p>
 
     <p>注：标注为"可选信息"的字段仅在您明确授权相关权限后才会收集，拒绝授权不影响游戏核心功能的使用。</p>
 
@@ -272,9 +388,9 @@
     <p>您可以在设备本身操作系统中关闭相关敏感权限改变同意范围或撤回您的授权。</p>
     <p>请您理解，特定的业务功能和服务将需要您的信息才能得以完成，当您撤回同意或授权后，我们无法继续为您提供撤回同意或授权所对应的功能和服务，也不再处理您相应的个人信息。但您撤回同意或授权的决定，不会影响我们此前基于您的授权而开展的个人信息处理。</p>
     <p>（三）注销您的账号</p>
-    <p>如果您不再希望使用我们的服务，您可以通过向我们发送邮件（邮箱：ying_games@qq.com）的方式申请注销账号。在您注销账号前，我们将验证您的个人身份、安全状态、设备信息等。请您知悉并理解，注销账号的行为是不可逆的行为，当您注销账号后，我们将删除有关您的相关信息，但法律法规另有规定的除外。</p>
+    <p>如果您不再希望使用我们的服务，您可以通过向我们发送邮件（邮箱：xinglungames@outlook.com）的方式申请注销账号。在您注销账号前，我们将验证您的个人身份、安全状态、设备信息等。请您知悉并理解，注销账号的行为是不可逆的行为，当您注销账号后，我们将删除有关您的相关信息，但法律法规另有规定的除外。</p>
     <p>（四）投诉举报</p>
-    <p>您可按照我们公示的制度进行投诉或举报。如果您认为您的个人信息权利可能受到侵害，或者发现侵害个人信息权利的线索（例如：认为我们收集您的个人信息违反法律规定或者双方约定），您可以通过邮箱：ying_games@qq.com 与我们联系，我们核查后会及时反馈您的投诉与举报。</p>
+    <p>您可按照我们公示的制度进行投诉或举报。如果您认为您的个人信息权利可能受到侵害，或者发现侵害个人信息权利的线索（例如：认为我们收集您的个人信息违反法律规定或者双方约定），您可以通过邮箱：xinglungames@outlook.com 与我们联系，我们核查后会及时反馈您的投诉与举报。</p>
     <p>（五）访问隐私政策</p>
     <p>您可以在注册登录页面，查看本隐私政策的全部内容或在游戏应用中查看本隐私政策全部内容。</p>
     <p>（六）停止运营向您告知</p>
