@@ -141,6 +141,7 @@
             <li>我们不会因为您同意本隐私政策而一次性收集全部信息，仅在您使用具体功能时，按照最小必要原则处理相应信息。</li>
             <li>电话状态、位置、存储、通知等敏感权限不会由我们默认开启；需要时会通过系统授权弹窗单独征求您的同意，您可以拒绝或撤回。</li>
             <li>本游戏使用 TradPlus SDK 进行广告聚合，并接入优量汇、快手联盟和 Sigmob 等广告网络。各 SDK 的处理规则见本政策第四部分。</li>
+            <li><strong>当您使用 TapTap 登录、合规认证、成就、排行榜、云存档、评价、更新唤起或 REP 功能时，TapSDK 会读取 AndroidID，用于确保设备系统兼容及定位解决服务故障；还会处理系统版本、设备型号、CPU、内存和网络类型等必要信息。</strong></li>
             <li>个性化广告并非本游戏核心功能。拒绝或关闭个性化广告不会减少广告数量，但广告内容与您的相关度可能降低。</li>
         </ul>
     </div>
@@ -158,7 +159,8 @@
     <p>上述信息主要用于完成网络连接、资源加载、设备适配、异常排查、反作弊和安全保障。具体信息会因设备型号、系统版本、功能配置及您是否授权而不同。</p>
 
     <h3>2. TapTap 账号登录、实名认证与防沉迷</h3>
-    <p>当您选择使用 TapTap 账号登录时，TapTap SDK 会在您授权后向我们提供实现登录所必要的账号标识、昵称、头像、登录状态和授权凭证。我们使用这些信息完成登录、识别账号和同步相关游戏服务。</p>
+    <p>当您选择使用 TapTap 账号登录时，<strong>TapTap 登录 SDK</strong> 会在您授权后向我们提供实现登录所必要的账号标识、昵称、头像、登录状态和授权凭证。我们使用这些信息完成登录、识别账号和同步相关游戏服务。</p>
+    <p><strong>TapSDK 处理设备信息的特别说明：</strong>收集方式为 TapSDK 自动采集；收集范围包括系统版本、设备型号、设备 CPU 信息、设备内存信息、网络类型和 <strong>AndroidID</strong>；处理目的是确保设备系统兼容，并在发生服务故障时进行针对性排查和优化。收集频次为：系统版本、设备型号、CPU、内存和网络类型在每次应用冷启动时获取一次，AndroidID 在 TapSDK 初始化及您发起 TapTap 授权时获取一次。TapSDK 还可能查询设备上是否已安装 TapTap 客户端，用于登录授权、更新唤起、评价或 REP 跳转。本游戏仅在您同意本隐私政策后初始化并调用 TapSDK。</p>
     <p>为履行网络游戏实名认证及未成年人防沉迷义务，实名认证信息可能由 TapTap 合规服务依法处理。我们通常仅接收认证状态、年龄区间或是否受防沉迷限制等必要结果；如依法需要由我们直接处理实名身份信息，我们会另行向您说明并取得必要授权。实名身份信息属于敏感个人信息，拒绝提供可能导致您无法进入游戏或受到相应功能限制。</p>
 
     <h3>3. 游戏数据、排行榜、成就与云服务</h3>
@@ -306,12 +308,21 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="sdk-name">TapTap SDK</td>
+                    <td class="sdk-name">TapSDK<br><span class="small">TapTap 登录 SDK、合规认证、成就、排行榜、云存档、评价、更新唤起、REP</span></td>
                     <td>易玩（上海）网络科技有限公司</td>
-                    <td>TapTap 账号登录、实名认证与防沉迷、排行榜、成就、评价、更新及相关账号服务。</td>
-                    <td>TapTap 账号标识、昵称、头像、登录授权凭证、合规认证结果；设备品牌、型号、操作系统、屏幕、CPU、内存；IP 地址、网络类型；应用包名、版本；游戏分数、排名、成就及相关交互数据；运行和崩溃日志。</td>
-                    <td>网络状态；在分享图片等具体功能中可能使用存储能力。</td>
-                    <td><a href="https://developer.taptap.cn/docs/sdk/start/agreement/" target="_blank" rel="noopener noreferrer">TapTap 开发者服务协议与隐私规则</a></td>
+                    <td>提供 TapTap 账号授权登录、实名认证与未成年人防沉迷、成就、排行榜、云存档、评价、游戏更新唤起，以及从游戏客户端跳转至 TapTap 客户端的 REP 服务。</td>
+                    <td>
+                        <strong>收集方式：</strong>TapSDK 自动采集。<br>
+                        <strong>必要设备信息：</strong>系统版本、设备型号、设备 CPU 信息、设备内存信息、网络类型、<strong>AndroidID</strong>，用于确保设备系统兼容、定位和解决服务故障。系统版本、设备型号、CPU、内存和网络类型在每次应用冷启动时获取一次；AndroidID 在 SDK 初始化及您发起授权时获取一次。<br>
+                        <strong>设备指定应用信息：</strong>是否已安装 TapTap 客户端，用于登录授权、评价、更新唤起及 REP 跳转。<br>
+                        <strong>账号与业务信息：</strong>经您授权的 TapTap 账号标识、昵称、头像、登录授权凭证、合规认证结果，以及您使用排行榜、成就和云存档功能时产生或提交的分数、排名、成就和游戏存档数据。<br>
+                        <strong>其他必要信息：</strong>成就功能可能处理设备名称，用于本地数据加密。
+                    </td>
+                    <td>INTERNET，用于访问网络数据；ACCESS_NETWORK_STATE，用于检查网络连接状态；排行榜分享图片时可能使用写入外部存储能力；更新唤起功能可能使用安装 APK 能力。</td>
+                    <td>
+                        <a href="https://developer.taptap.cn/docs/sdk/start/agreement/" target="_blank" rel="noopener noreferrer">TapSDK 隐私政策</a><br>
+                        <a href="https://developer.taptap.cn/docs/sdk/start/compliance/" target="_blank" rel="noopener noreferrer">TapSDK 合规使用说明</a>
+                    </td>
                 </tr>
                 <tr>
                     <td class="sdk-name">TradPlus SDK<br><span class="small">含 TP Exchange、Cross Promotion 相关组件</span></td>
