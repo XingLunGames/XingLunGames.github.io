@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>《箭头了箭》游戏隐私政策</title>
+    <style>
+        :root {
+            --primary: #0066cc;
+            --text: #2f343b;
+            --muted: #667085;
+            --border: #d9e0ea;
+            --soft: #f5f8fc;
+            --notice: #fff8e6;
+            --notice-border: #f0c36d;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 24px 20px 48px;
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            background: #fff;
+        }
+
+        h1 {
+            margin: 24px 0;
+            font-size: 26px;
+            line-height: 1.45;
+            text-align: center;
+        }
+
+        h2 {
+            margin: 32px 0 16px;
+            padding-left: 10px;
+            border-left: 4px solid var(--primary);
+            font-size: 21px;
+            line-height: 1.5;
+        }
+
+        h3 {
+            margin: 24px 0 12px;
+            font-size: 18px;
+        }
+
+        p { margin: 12px 0; text-align: justify; }
+        ul, ol { margin: 12px 0; padding-left: 32px; }
+        li { margin: 7px 0; }
+        a { color: var(--primary); text-decoration: none; }
+        a:hover, a:focus { text-decoration: underline; }
+
+        .meta {
+            margin: 20px 0;
+            padding: 16px 18px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--soft);
+        }
+
+        .meta p { margin: 4px 0; }
+
+        .summary {
+            margin: 20px 0 28px;
+            padding: 16px 18px;
+            border-left: 4px solid var(--primary);
+            border-radius: 6px;
+            background: var(--soft);
+        }
+
+        .notice {
+            margin: 18px 0;
+            padding: 14px 16px;
+            border: 1px solid var(--notice-border);
+            border-radius: 8px;
+            background: var(--notice);
+        }
+
+        .tbl-wrap {
+            margin: 18px 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            min-width: 760px;
+            border-collapse: collapse;
+            table-layout: fixed;
+            font-size: 14px;
+            line-height: 1.65;
+            background: #fff;
+        }
+
+        .tbl-sdk { min-width: 1160px; }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid var(--border);
+            vertical-align: top;
+            text-align: left;
+            overflow-wrap: anywhere;
+        }
+
+        th { background: #eef4fc; }
+        tbody tr:nth-child(even) { background: #fafcff; }
+        td a { word-break: break-all; }
+        .sdk-name { color: var(--primary); font-weight: 700; }
+        .small { color: var(--muted); font-size: 0.92em; }
+
+        @media (max-width: 700px) {
+            body { padding: 16px 12px 36px; font-size: 15px; }
+            h1 { font-size: 22px; }
+            h2 { font-size: 19px; }
+            table { font-size: 13px; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>《箭头了箭》游戏隐私政策</h1>
+
+    <div class="meta">
+        <p><strong>运营者：</strong>深圳市星伦智游网络科技有限公司</p>
+        <p><strong>更新日期：</strong>2026年8月7日</p>
+        <p><strong>生效日期：</strong>2026年8月7日</p>
+        <p><strong>联系邮箱：</strong><a href="mailto:xinglungames@outlook.com">xinglungames@outlook.com</a></p>
+    </div>
+
+    <p>深圳市星伦智游网络科技有限公司（以下简称“我们”）是《箭头了箭》（以下简称“本游戏”）的运营者。我们重视您的个人信息和隐私安全，并依照适用的法律法规处理和保护您的个人信息。</p>
+    <p>请您在使用本游戏前完整阅读并理解本隐私政策，尤其是以<strong>加粗</strong>方式提示的内容。您可以自主选择是否同意本隐私政策；未经您同意，我们不会初始化 Dirichlet 聚合广告 SDK（TapADN SDK）或发起广告请求。若您不同意本隐私政策，我们将无法向您提供需要处理个人信息的游戏及联网服务。</p>
+
+    <div class="summary">
+        <strong>重点说明：</strong>
+        <ul>
+            <li>我们不会因为您同意本隐私政策而一次性收集全部信息，仅在您使用具体功能时，按照最小必要原则处理相应信息。</li>
+            <li>电话状态、位置、存储、通知等敏感权限不会由我们默认开启；需要时会通过系统授权弹窗单独征求您的同意，您可以拒绝或撤回。</li>
+            <li>本游戏使用 Dirichlet 聚合广告 SDK（TapADN SDK）进行广告聚合，当前接入穿山甲广告 SDK 和腾讯优量汇 SDK。各 SDK 的处理规则见本政策第四部分。</li>
+            <li><strong>当您使用 TapTap 登录、合规认证、成就、排行榜、云存档、评价、更新唤起或 REP 功能时，TapSDK 会读取 AndroidID，用于确保设备系统兼容及定位解决服务故障；还会处理系统版本、设备型号、CPU、内存和网络类型等必要信息。</strong></li>
+            <li>个性化广告并非本游戏核心功能。拒绝或关闭个性化广告不会减少广告数量，但广告内容与您的相关度可能降低。</li>
+        </ul>
+    </div>
+
+    <h2>一、我们如何收集和使用个人信息</h2>
+
+    <h3>1. 保障游戏基础运行与安全</h3>
+    <p>为保障本游戏正常运行、适配您的设备、诊断故障并维护网络与账号安全，我们可能处理以下信息：</p>
+    <ul>
+        <li><strong>设备与系统信息：</strong>设备品牌、制造商、型号、操作系统及版本、屏幕尺寸与分辨率、CPU、内存、存储空间、系统语言、时区；</li>
+        <li><strong>应用信息：</strong>本游戏包名、版本号、安装时间、安装渠道、前后台状态；</li>
+        <li><strong>网络信息：</strong>IP 地址、网络类型、网络状态、Wi-Fi 状态、运营商信息；</li>
+        <li><strong>日志与诊断信息：</strong>启动、点击、页面访问、运行日志、崩溃日志、性能数据及错误信息。</li>
+    </ul>
+    <p>上述信息主要用于完成网络连接、资源加载、设备适配、异常排查、反作弊和安全保障。具体信息会因设备型号、系统版本、功能配置及您是否授权而不同。</p>
+
+    <h3>2. TapTap 账号登录、实名认证与防沉迷</h3>
+    <p>当您选择使用 TapTap 账号登录时，<strong>TapTap 登录 SDK</strong> 会在您授权后向我们提供实现登录所必要的账号标识、昵称、头像、登录状态和授权凭证。我们使用这些信息完成登录、识别账号和同步相关游戏服务。</p>
+    <p><strong>TapSDK 处理设备信息的特别说明：</strong>收集方式为 TapSDK 自动采集；收集范围包括系统版本、设备型号、设备 CPU 信息、设备内存信息、网络类型和 <strong>AndroidID</strong>；处理目的是确保设备系统兼容，并在发生服务故障时进行针对性排查和优化。收集频次为：系统版本、设备型号、CPU、内存和网络类型在每次应用冷启动时获取一次，AndroidID 在 TapSDK 初始化及您发起 TapTap 授权时获取一次。TapSDK 还可能查询设备上是否已安装 TapTap 客户端，用于登录授权、更新唤起、评价或 REP 跳转。本游戏仅在您同意本隐私政策后初始化并调用 TapSDK。</p>
+    <p>为履行网络游戏实名认证及未成年人防沉迷义务，实名认证信息可能由 TapTap 合规服务依法处理。我们通常仅接收认证状态、年龄区间或是否受防沉迷限制等必要结果；如依法需要由我们直接处理实名身份信息，我们会另行向您说明并取得必要授权。实名身份信息属于敏感个人信息，拒绝提供可能导致您无法进入游戏或受到相应功能限制。</p>
+
+    <h3>3. 游戏数据、排行榜、成就与云服务</h3>
+    <p>为保存游戏进度并提供签到、关卡、道具、金币、装扮、排行榜、成就及云存档等功能，我们可能处理您的 TapTap 账号标识、游戏昵称、头像、关卡进度、分数、成就、签到记录、道具与虚拟资产记录、游戏设置和云存档数据。排行榜中可能向其他用户展示您的昵称、头像、分数和排名。</p>
+
+    <h3>4. 广告展示与广告效果分析</h3>
+    <p>本游戏通过 Dirichlet 聚合广告 SDK（TapADN SDK）聚合展示激励视频、插屏和横幅广告，并根据实时投放策略调用穿山甲广告 SDK 或腾讯优量汇 SDK。为完成广告请求、展示、频次控制、效果统计、监测归因、反作弊及保障服务稳定，Dirichlet 及当次实际提供广告的合作方可能处理设备信息、应用信息、网络信息、广告展示、点击、关闭、观看完成及转化等交互数据。详细范围见本政策第四部分的第三方 SDK 清单。</p>
+    <p>当您主动点击应用下载类广告时，广告服务方可能展示待下载应用的名称、开发者、版本、大小、功能介绍、权限列表及隐私政策，并在您确认后执行下载或跳转安装；我们不会以欺骗、误导或强迫方式要求您下载、安装应用。</p>
+
+    <h3>5. 个性化广告设置</h3>
+    <p>广告服务方可能根据设备标识、粗略地域、应用总体安装使用情况及广告浏览、点击、转化等操作记录，通过算法分析您的偏好并展示相关性更高的广告。您可以进入游戏设置，点击“个性化广告设置”，通过“个性化广告”开关随时开启或关闭该功能；本游戏会保存您的选择，并在下次启动时将该选择重新同步给 Dirichlet 聚合广告 SDK。您也可以使用设备系统提供的广告隐私设置限制广告跟踪。</p>
+    <p><strong>关闭个性化广告不会减少广告展示数量，您仍会看到广告，但广告内容与您的兴趣相关度可能降低。</strong>如游戏内入口暂时无法使用，您还可以通过本政策“联系我们”所列邮箱提出相关请求。</p>
+
+    <h3>6. 运营统计</h3>
+    <p>为了解本游戏的使用情况、改进功能并定位异常，我们使用 U-APP 移动统计 SDK 处理去标识化设备标识、应用版本、设备与网络信息、页面访问、功能点击、会话时长、崩溃及性能数据。我们不会仅基于该等统计信息识别您的直接身份。</p>
+
+    <h3>7. 您主动提供的信息</h3>
+    <p>当您使用兑换码、客服、投诉、建议、账号注销或参加运营活动时，我们会根据具体场景处理您主动提交的兑换码、账号标识、联系方式、问题描述、截图及履行活动所必需的信息。我们会在相关页面另行说明信息用途；您拒绝提供非必要信息不会影响核心玩法。</p>
+
+    <h3>8. 收集和使用目的发生变化</h3>
+    <p>若我们拟将您的个人信息用于本政策未载明的其他目的，或处理目的、方式、种类发生重大变化，我们会通过弹窗、页面提示或其他适当方式再次告知，并依法取得您的同意。</p>
+
+    <h3>9. 系统权限清单</h3>
+    <p>系统权限不等同于我们一定会收集相关信息。只有在具体功能需要且符合法律要求时，我们或相关 SDK 才会调用相应权限。您可在设备“设置—应用—权限管理”中查看、关闭或重新授权。</p>
+
+    <div class="tbl-wrap">
+        <table>
+            <colgroup>
+                <col style="width:18%">
+                <col style="width:28%">
+                <col style="width:39%">
+                <col style="width:15%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>权限/能力</th>
+                    <th>Android 权限</th>
+                    <th>使用目的与场景</th>
+                    <th>是否可拒绝</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>网络访问与网络状态</td>
+                    <td>INTERNET、ACCESS_NETWORK_STATE、ACCESS_WIFI_STATE、CHANGE_NETWORK_STATE</td>
+                    <td>登录、加载游戏资源、同步数据、请求与展示广告、判断网络质量和保障服务稳定。</td>
+                    <td>联网服务所必需</td>
+                </tr>
+                <tr>
+                    <td>电话状态</td>
+                    <td>READ_PHONE_STATE</td>
+                    <td>在适用系统版本和您授权的情况下，由广告合作方用于设备识别、广告归因与反作弊。拒绝后可能影响广告填充或效果统计。</td>
+                    <td>可拒绝</td>
+                </tr>
+                <tr>
+                    <td>位置</td>
+                    <td>ACCESS_COARSE_LOCATION、ACCESS_FINE_LOCATION</td>
+                    <td>在您主动授权后用于地域化广告投放或广告反作弊。我们不会将位置权限用于游戏核心玩法。</td>
+                    <td>可拒绝</td>
+                </tr>
+                <tr>
+                    <td>外部存储</td>
+                    <td>WRITE_EXTERNAL_STORAGE</td>
+                    <td>在部分较低 Android 版本中缓存广告素材，或在您主动点击并确认后保存应用下载广告相关文件。</td>
+                    <td>可拒绝</td>
+                </tr>
+                <tr>
+                    <td>查询应用安装情况</td>
+                    <td>QUERY_ALL_PACKAGES</td>
+                    <td>在广告跳转或下载场景中判断目标应用是否已安装，以完成正确跳转、避免重复下载及识别异常流量。</td>
+                    <td>系统能力，无单独弹窗</td>
+                </tr>
+                <tr>
+                    <td>请求安装应用</td>
+                    <td>REQUEST_INSTALL_PACKAGES</td>
+                    <td>仅在您主动点击应用下载类广告并确认后，调起系统安装页面；是否安装由您决定。</td>
+                    <td>可拒绝</td>
+                </tr>
+                <tr>
+                    <td>通知</td>
+                    <td>POST_NOTIFICATIONS</td>
+                    <td>经您授权后发送游戏活动、服务或版本更新提醒。</td>
+                    <td>可拒绝</td>
+                </tr>
+                <tr>
+                    <td>震动</td>
+                    <td>VIBRATE</td>
+                    <td>提供游戏操作触感反馈。</td>
+                    <td>可在游戏设置中关闭</td>
+                </tr>
+                <tr>
+                    <td>保持唤醒</td>
+                    <td>WAKE_LOCK</td>
+                    <td>在游戏运行或播放视频广告时避免因自动熄屏造成中断。</td>
+                    <td>系统能力，无单独弹窗</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="small">说明：权限名称和授权方式会因 Android 版本、设备厂商及应用商店规则不同而有所差异。若后续新增与个人信息相关的权限，我们会在首次调用前说明目的并依法征得您的同意。</p>
+
+    <h2>二、Cookie、设备标识和同类技术</h2>
+    <p>本游戏及第三方 SDK 可能使用设备标识符、本地存储、缓存和其他同类技术，记录您的登录状态、游戏设置、广告展示频次及安全状态。我们仅将这些技术用于本政策所述目的。您清除应用数据、重置设备广告标识或卸载本游戏后，部分本地记录会被删除或重置；依法需要保留的记录除外。</p>
+
+    <h2>三、我们如何存储个人信息</h2>
+
+    <h3>1. 存储地点</h3>
+    <p>我们将在中华人民共和国境内运营过程中收集和产生的个人信息存储于境内。目前，我们不会主动将您的个人信息传输至境外。若未来发生跨境提供，我们会依法履行告知、取得单独同意及其他法定程序。</p>
+
+    <h3>2. 存储期限</h3>
+    <p>我们仅在实现本政策所述目的所必需的最短期限内保存个人信息，法律法规另有规定的除外。期限届满后，我们会删除或匿名化处理相关信息。具体期限会根据账号存续状态、服务需要、安全审计、争议解决及法定义务确定。</p>
+
+    <h3>3. 本地数据</h3>
+    <p>部分游戏进度、设置、隐私选择及缓存会存储在您的设备本地。您清除应用数据或卸载本游戏可能导致这些本地数据无法恢复；已经同步至 TapTap 或其他云服务的数据，按照相应服务规则处理。</p>
+
+    <h2>四、我们如何共享、转让和公开披露个人信息</h2>
+
+    <h3>1. 第三方 SDK 与合作方共享</h3>
+    <p>为实现账号、合规、广告、统计及游戏引擎等功能，本游戏集成以下第三方 SDK。第三方 SDK 可能通过本游戏直接收集必要信息并向其服务器传输，或由我们向其提供实现功能所必需的信息。第三方按照其隐私政策独立处理相关信息，我们会对合作方开展必要的安全评估，并要求其在约定目的和范围内处理信息。</p>
+
+    <div class="tbl-wrap">
+        <table class="tbl-sdk">
+            <colgroup>
+                <col style="width:11%">
+                <col style="width:13%">
+                <col style="width:17%">
+                <col style="width:30%">
+                <col style="width:14%">
+                <col style="width:15%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>SDK 名称</th>
+                    <th>提供方</th>
+                    <th>功能与处理目的</th>
+                    <th>可能处理的个人信息类型</th>
+                    <th>可能调用的权限/能力</th>
+                    <th>隐私规则</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="sdk-name">TapSDK<br><span class="small">TapTap 登录 SDK、合规认证、成就、排行榜、云存档、评价、更新唤起、REP</span></td>
+                    <td>易玩（上海）网络科技有限公司</td>
+                    <td>提供 TapTap 账号授权登录、实名认证与未成年人防沉迷、成就、排行榜、云存档、评价、游戏更新唤起，以及从游戏客户端跳转至 TapTap 客户端的 REP 服务。</td>
+                    <td>
+                        <strong>收集方式：</strong>TapSDK 自动采集。<br>
+                        <strong>必要设备信息：</strong>系统版本、设备型号、设备 CPU 信息、设备内存信息、网络类型、<strong>AndroidID</strong>，用于确保设备系统兼容、定位和解决服务故障。系统版本、设备型号、CPU、内存和网络类型在每次应用冷启动时获取一次；AndroidID 在 SDK 初始化及您发起授权时获取一次。<br>
+                        <strong>设备指定应用信息：</strong>是否已安装 TapTap 客户端，用于登录授权、评价、更新唤起及 REP 跳转。<br>
+                        <strong>账号与业务信息：</strong>经您授权的 TapTap 账号标识、昵称、头像、登录授权凭证、合规认证结果，以及您使用排行榜、成就和云存档功能时产生或提交的分数、排名、成就和游戏存档数据。<br>
+                        <strong>其他必要信息：</strong>成就功能可能处理设备名称，用于本地数据加密。
+                    </td>
+                    <td>INTERNET，用于访问网络数据；ACCESS_NETWORK_STATE，用于检查网络连接状态；排行榜分享图片时可能使用写入外部存储能力；更新唤起功能可能使用安装 APK 能力。</td>
+                    <td>
+                        <a href="https://developer.taptap.cn/docs/sdk/start/agreement/" target="_blank" rel="noopener noreferrer">TapSDK 隐私政策</a><br>
+                        <a href="https://developer.taptap.cn/docs/sdk/start/compliance/" target="_blank" rel="noopener noreferrer">TapSDK 合规使用说明</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sdk-name">Dirichlet 聚合广告 SDK<br><span class="small">TapADN SDK</span></td>
+                    <td>上海艾得蒽数字科技有限公司</td>
+                    <td>广告聚合与投放、广告展示与效果优化、广告监测归因、反作弊、投放数据统计分析、个性化广告，以及保障广告服务稳定性和有效性。</td>
+                    <td>SDK 自行采集：设备品牌、型号、操作系统版本、屏幕密度与分辨率、设备语言、时区、CPU、可用存储空间、OAID；根据设备、SDK 配置及授权情况，还可能处理 IMEI、AndroidID、AAID、VAID；Wi-Fi 状态、网络信号强度、IP 地址；应用包名、版本号、运行中的进程、前后台状态、软件列表；广告展示、点击和转化等交互数据；加速度、陀螺仪、线性加速度、磁场、旋转矢量等传感器信息；精确或粗略位置信息；崩溃和性能数据。</td>
+                    <td>INTERNET、ACCESS_NETWORK_STATE 为广告请求所需；根据广告场景、SDK 配置及您的授权，可能使用 ACCESS_WIFI_STATE、READ_PHONE_STATE、ACCESS_COARSE_LOCATION、ACCESS_FINE_LOCATION、QUERY_ALL_PACKAGES、WRITE_EXTERNAL_STORAGE、REQUEST_INSTALL_PACKAGES 等权限或能力。</td>
+                    <td>
+                        <a href="https://ssp.dirichlet.cn/docs/agreement/" target="_blank" rel="noopener noreferrer">TapADN SDK 隐私政策</a><br>
+                        <a href="https://ssp.dirichlet.cn/docs/agreement/#%E4%B8%89%E6%88%91%E4%BB%AC%E5%A6%82%E4%BD%95%E5%85%B1%E4%BA%AB%E8%BD%AC%E8%AE%A9%E6%8A%AB%E9%9C%B2%E6%82%A8%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF" target="_blank" rel="noopener noreferrer">TapADN SDK 第三方共享清单</a><br>
+                        <a href="https://ssp.dirichlet.cn/docs/compliance/" target="_blank" rel="noopener noreferrer">TapADN SDK 合规使用说明</a><br>
+                        <a href="https://ssp.dirichlet.cn/docs/personalized/" target="_blank" rel="noopener noreferrer">个性化推荐设置说明</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sdk-name">穿山甲广告 SDK</td>
+                    <td>北京巨量引擎网络技术有限公司</td>
+                    <td>广告请求、展示、互动、效果统计、监测归因、反作弊和个性化广告。</td>
+                    <td>设备品牌、型号、操作系统版本、屏幕、语言、时区、SIM 卡、CPU、存储空间、OAID、AndroidID；根据设备、SDK 配置及授权情况，还可能处理其他设备标识符；运营商、Wi-Fi 状态、网络信号强度、IP 地址；应用包名、版本号、进程、前后台状态、软件列表；广告展示、点击和转化等交互数据；传感器信息；精确或粗略位置信息；崩溃和性能数据。</td>
+                    <td>网络与 Wi-Fi 状态；根据广告场景、SDK 配置及您的授权，可能使用电话状态、位置、软件列表、存储及应用安装等权限或能力。</td>
+                    <td><a href="https://www.csjplatform.com/privacy/partner" target="_blank" rel="noopener noreferrer">穿山甲广告 SDK 隐私政策</a></td>
+                </tr>
+                <tr>
+                    <td class="sdk-name">优量汇 SDK<br><span class="small">腾讯广告</span></td>
+                    <td>深圳市腾讯计算机系统有限公司</td>
+                    <td>广告请求、展示、互动、效果统计、归因、反作弊和个性化广告。</td>
+                    <td>设备制造商、品牌、型号、操作系统版本、屏幕分辨率、方向与 DPI、IP 地址、网络类型、运营商、时区、OAID；根据设备、SDK 配置及授权情况，还可能处理 AndroidID；应用包名、版本号、进程名称、运行状态、可疑行为、应用列表或安装信息；广告展示、点击、转化等交互数据；崩溃和性能数据；磁力、加速度、重力、陀螺仪等传感器信息；粗略或精确位置信息。</td>
+                    <td>网络与 Wi-Fi 状态；根据广告场景、SDK 配置及您的授权，可能使用位置、软件列表、存储及应用安装等权限或能力。</td>
+                    <td><a href="https://e.qq.com/dev/help_detail.html?cid=2005&amp;pid=5983" target="_blank" rel="noopener noreferrer">优量汇 SDK 隐私保护声明</a></td>
+                </tr>
+                <tr>
+                    <td class="sdk-name">U-APP 移动统计 SDK</td>
+                    <td>友盟同欣（北京）科技有限公司、北京锐讯灵通科技有限公司</td>
+                    <td>应用运行统计、用户行为趋势分析、版本与渠道分析、崩溃诊断和产品优化。</td>
+                    <td>去标识化设备标识（如 OAID、Android ID，具体以系统和配置为准）、设备品牌与型号、操作系统、屏幕、应用包名与版本、IP 地址、网络类型、运营商、页面访问、会话、功能点击、崩溃和性能数据。</td>
+                    <td>网络状态；根据配置与您的授权，可能使用设备信息相关能力。</td>
+                    <td><a href="https://developer.umeng.com/docs/147377/detail/3038360" target="_blank" rel="noopener noreferrer">友盟+ SDK 隐私合规说明</a></td>
+                </tr>
+                <tr>
+                    <td class="sdk-name">Unity3D</td>
+                    <td>Unity Technologies</td>
+                    <td>提供游戏引擎运行、图形渲染、设备兼容、性能监测和错误排查能力。</td>
+                    <td>设备型号、操作系统、CPU、内存、图形能力、屏幕信息、应用版本、IP 地址、设备或安装标识、运行日志、崩溃和性能数据。</td>
+                    <td>网络状态及维持游戏正常运行所需的系统能力。</td>
+                    <td><a href="https://unity.com/cn/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener noreferrer">Unity 游戏玩家和应用用户隐私政策</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="notice">
+        <strong>广告 SDK 初始化说明：</strong>本游戏会在您阅读并同意本隐私政策后初始化 Dirichlet 聚合广告 SDK（TapADN SDK），并在需要展示广告时发起广告请求。若您点击“不同意”，我们不会初始化该 SDK，也不会发起广告请求。Dirichlet 会根据实时投放策略调用穿山甲或腾讯优量汇，并非每次请求都会调用上表列出的全部广告 SDK；实际处理范围取决于当次返回的广告网络、设备环境、SDK 配置和您的授权。
+    </div>
+
+    <p><strong>关于传感器信息：</strong>Dirichlet、穿山甲或腾讯优量汇可能读取传感器列表及加速度、陀螺仪等传感器数据，用于广告反作弊，或实现“摇一摇”“扭一扭”等互动广告。普通运动传感器通常不触发单独的系统授权弹窗。我们不会将该等信息用于推断您的健康状况或持续追踪您的行踪。</p>
+
+    <p><strong>关于广告关闭：</strong>广告页面应提供清晰可用的“关闭”或“跳过”入口。激励视频需要满足相应观看条件后才能获得游戏奖励，但您仍可以选择不观看或按广告页面规则退出。我们不会设置虚假按钮、扩大点击热区或以其他方式诱导点击。</p>
+
+    <h3>2. 其他共享情形</h3>
+    <p>除上述 SDK 场景外，我们仅在下列情况下共享个人信息：</p>
+    <ul>
+        <li>根据您的单独同意，与您指定的第三方共享；</li>
+        <li>为履行合同、处理客服或保障账号与服务安全，在最小必要范围内与服务供应商共享；</li>
+        <li>根据法律法规、诉讼争议解决或行政、司法机关依法提出的要求提供；</li>
+        <li>在合并、分立、收购、资产转让或破产清算等交易中需要转移个人信息时，我们会告知接收方并要求其继续受本政策约束；接收方变更原处理目的或方式的，应重新取得您的同意。</li>
+    </ul>
+
+    <h3>3. 转让与公开披露</h3>
+    <p>除依法获得您的单独同意或法律法规另有规定外，我们不会转让或公开披露您的个人信息。经匿名化处理且无法识别特定个人、不能复原的信息，不属于个人信息。</p>
+
+    <h2>五、我们如何保护个人信息</h2>
+    <p>我们采取与业务相适应的管理、技术和物理安全措施，包括访问控制、权限管理、加密传输、去标识化、安全审计和应急响应，以降低信息遭受未经授权访问、使用、修改、泄露、损毁或丢失的风险。</p>
+    <p>互联网环境并非绝对安全。发生个人信息安全事件后，我们会依法采取补救措施，并通过推送、公告、邮件或其他适当方式告知事件情况、可能影响、已经或将要采取的措施及您可采取的防范建议，同时按照监管要求报告。</p>
+
+    <h2>六、您的个人信息权利</h2>
+    <p>在适用法律规定的范围内，您有权查询、复制、更正、补充、删除您的个人信息，改变或撤回授权同意，限制或拒绝处理，关闭个性化推荐，以及注销账号。</p>
+    <ul>
+        <li><strong>管理系统权限：</strong>前往设备“设置—应用—本游戏—权限”关闭或重新授权位置、电话状态、通知、存储等权限。</li>
+        <li><strong>管理个性化广告：</strong>进入游戏设置，点击“个性化广告设置”，通过“个性化广告”开关随时开启或关闭；也可使用设备系统的广告隐私设置，或通过联系邮箱提交相关请求。</li>
+        <li><strong>注销账号：</strong>可发送邮件至 <a href="mailto:xinglungames@outlook.com">xinglungames@outlook.com</a> 申请注销。为保障账号安全，我们可能需要核验您的身份和账号状态。注销完成后，我们会依法删除或匿名化处理相关信息。</li>
+        <li><strong>查询、更正、删除或投诉：</strong>可通过上述邮箱联系我们，并说明您的请求内容和用于核验身份的必要信息。</li>
+        <li><strong>撤回对本政策的同意：</strong>您可以联系我们撤回同意，或通过清除应用数据、卸载本游戏等方式停止后续使用。撤回不影响撤回前基于您的同意已进行处理的效力。</li>
+    </ul>
+    <p>我们原则上会在收到并核验您的请求后十五日内答复。对于无端重复、需要过多技术手段、可能损害他人合法权益或法律法规允许拒绝的请求，我们可能依法拒绝，并向您说明理由。</p>
+
+    <h2>七、未成年人个人信息保护</h2>
+    <p>若您未满十八周岁，应在父母或其他监护人的陪同和指导下阅读本政策，并在取得监护人同意后使用本游戏。对于不满十四周岁的未成年人，我们会按照儿童个人信息保护的法律要求，在取得监护人同意后处理相关个人信息。</p>
+    <p>我们通过实名认证和防沉迷服务识别未成年人账号，并依法限制游戏时长等。若监护人对其所监护未成年人的个人信息有疑问，或认为我们在未取得有效监护人同意的情况下处理了儿童个人信息，请通过本政策所列方式联系我们；核实后我们会依法处理。</p>
+
+    <h2>八、本政策的更新与通知</h2>
+    <p>我们可能根据游戏功能、SDK 接入、法律法规或监管要求更新本政策。发生处理目的、方式、信息种类、共享对象、跨境情况或联系方式等重大变化时，我们会通过启动弹窗、游戏内公告、推送或其他适当方式向您提示；依法需要重新取得同意的，我们会在更新内容生效前再次征得您的同意。</p>
+    <p>您可以在首次启动页面的隐私弹窗或进入游戏后通过可访问入口查看本政策。我们建议您定期查阅更新日期和具体内容。</p>
+
+    <h2>九、适用范围</h2>
+    <p>本政策适用于本游戏及由我们直接提供的相关服务，不适用于第三方独立提供且另有隐私政策的产品或服务。您通过广告、链接或跳转使用第三方服务时，第三方将依据其隐私规则处理您的信息，请您在使用前仔细阅读。</p>
+
+    <h2>十、联系我们</h2>
+    <p>如您对本政策、个人信息处理活动或您的个人信息权利有任何疑问、意见、投诉或建议，请通过以下方式联系我们：</p>
+    <ul>
+        <li>运营者：深圳市星伦智游网络科技有限公司</li>
+        <li>联系邮箱：<a href="mailto:xinglungames@outlook.com">xinglungames@outlook.com</a></li>
+    </ul>
+    <p>我们会在核验您的身份后及时处理，并原则上在十五日内予以答复。</p>
+</body>
+</html>
