@@ -216,6 +216,12 @@
                     <td>联网服务所必需</td>
                 </tr>
                 <tr>
+                    <td>蓝牙音频设备连接</td>
+                    <td>BLUETOOTH（Android 11 及以下）、BLUETOOTH_CONNECT（Android 12 及以上）</td>
+                    <td>由 Unity3D 音频模块在需要时识别已配对蓝牙耳机等音频设备的连接状态，并适配游戏音频输出。我们不使用蓝牙扫描附近设备，也不通过蓝牙信息推断您的位置。</td>
+                    <td>Android 12 及以上可拒绝；拒绝后可能影响蓝牙音频适配，不影响核心玩法</td>
+                </tr>
+                <tr>
                     <td>电话状态</td>
                     <td>READ_PHONE_STATE</td>
                     <td>在适用系统版本和您授权的情况下，由广告合作方用于设备识别、广告归因与反作弊。拒绝后可能影响广告填充或效果统计。</td>
@@ -248,19 +254,19 @@
                 <tr>
                     <td>通知</td>
                     <td>POST_NOTIFICATIONS</td>
-                    <td>经您授权后发送游戏活动、服务或版本更新提醒。</td>
-                    <td>可拒绝</td>
+                    <td>仅在您主动触发应用下载类广告等需要通知的场景，经您授权后显示下载进度、下载完成或相关服务提示；不会因启动本游戏而默认发送通知。</td>
+                    <td>可拒绝；拒绝不影响核心玩法</td>
                 </tr>
                 <tr>
                     <td>震动</td>
                     <td>VIBRATE</td>
-                    <td>提供游戏操作触感反馈。</td>
-                    <td>可在游戏设置中关闭</td>
+                    <td>提供游戏操作触感反馈，或在展示支持震动效果的互动广告时提供相应反馈。</td>
+                    <td>系统普通能力，无单独授权弹窗；游戏内触感可在设置中关闭</td>
                 </tr>
                 <tr>
                     <td>保持唤醒</td>
                     <td>WAKE_LOCK</td>
-                    <td>在游戏运行或播放视频广告时避免因自动熄屏造成中断。</td>
+                    <td>在游戏运行、播放视频广告或执行您主动触发的广告下载任务时，避免因自动熄屏造成中断。</td>
                     <td>系统能力，无单独弹窗</td>
                 </tr>
             </tbody>
@@ -392,8 +398,8 @@
                     <td class="sdk-name">Unity3D</td>
                     <td>Unity Technologies</td>
                     <td>提供游戏引擎运行、图形渲染、设备兼容、性能监测和错误排查能力。</td>
-                    <td><strong>收集方式：</strong>Unity3D 框架通过 SDK 自动采集或查询。<br><strong>具体信息：</strong><strong>AndroidID</strong>；<strong>设备支持的特定类型传感器列表</strong>，包括加速度计、陀螺仪、重力、线性加速度、旋转矢量、磁场等传感器的类型及是否支持，不等同于持续读取传感器测量数值；设备型号、操作系统、CPU、内存、图形能力、屏幕信息、应用版本、IP 地址、设备或安装标识、运行日志、崩溃和性能数据。<br><strong>处理时机：</strong>应用启动、Unity 引擎初始化或检测设备输入能力时。<br><strong>处理目的：</strong>游戏引擎运行、图形渲染、输入适配、设备兼容、服务维护、安全保障、性能监测和错误排查。</td>
-                    <td>网络状态及维持游戏正常运行所需的系统能力。</td>
+                    <td><strong>收集方式：</strong>Unity3D 框架通过 SDK 自动采集或查询。<br><strong>具体信息：</strong><strong>AndroidID</strong>；<strong>设备支持的特定类型传感器列表</strong>，包括加速度计、陀螺仪、重力、线性加速度、旋转矢量、磁场等传感器的类型及是否支持，不等同于持续读取传感器测量数值；已配对蓝牙音频设备的连接状态；设备型号、操作系统、CPU、内存、图形能力、屏幕信息、应用版本、IP 地址、设备或安装标识、运行日志、崩溃和性能数据。<br><strong>处理时机：</strong>应用启动、Unity 引擎初始化、检测设备输入能力或适配音频输出时。<br><strong>处理目的：</strong>游戏引擎运行、图形渲染、输入与蓝牙音频适配、设备兼容、服务维护、安全保障、性能监测和错误排查。</td>
+                    <td>网络状态；BLUETOOTH、BLUETOOTH_CONNECT 用于蓝牙音频设备兼容；以及维持游戏正常运行所需的系统能力。</td>
                     <td><a href="https://unity.com/cn/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener noreferrer">Unity 游戏玩家和应用用户隐私政策</a></td>
                 </tr>
             </tbody>
